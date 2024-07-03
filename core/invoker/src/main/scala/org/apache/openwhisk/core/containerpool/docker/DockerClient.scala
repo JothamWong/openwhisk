@@ -136,7 +136,7 @@ class DockerClient(dockerHost: Option[String] = None,
     }.flatMap { _ =>
       // Iff the semaphore was acquired successfully
       runCmd(
-        Seq("run", "-d") ++ args ++ Seq(image),
+        Seq("run", "--privileged", "-d") ++ Seq("--security-opt",  "seccomp=/seccomp-perf.json") ++ args ++ Seq(image),
         config.timeouts.run,
         if (config.maskDockerRunArgs) Some(Seq("run", "-d", "**ARGUMENTS HIDDEN**", image)) else None)
         .andThen {
