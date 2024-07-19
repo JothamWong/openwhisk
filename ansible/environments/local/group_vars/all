@@ -49,3 +49,12 @@ container_pool_akka_client: true
 runtimes_enable_concurrency: true
 limit_action_concurrency_max: 500
 namespace_default_limit_action_concurrency_max: 500
+
+db_activation_backend: ElasticSearch
+elastic_cluster_name: "openwhisk"
+elastic_protocol: "http"
+elastic_index_pattern: "openwhisk-%s"
+elastic_base_volume: "esdata"
+elastic_username: "admin"
+elastic_password: "admin"
+elasticsearch_connect_string: "172.17.0.1:9200"
